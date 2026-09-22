@@ -1,0 +1,101 @@
+:root {
+  --bg-base: #0A0D12;
+  --bg-surface: #12161F;
+  --bg-surface-2: #1A2030;
+  --bg-surface-3: #212840;
+  --border: #252B3B;
+  --border-soft: #1C2130;
+
+  --text-primary: #EDEFF4;
+  --text-secondary: #8C93A6;
+  --text-tertiary: #5B6175;
+
+  --accent-real: #2DD4BF;
+  --accent-real-dim: #14352F;
+  --accent-ai: #FB7185;
+  --accent-ai-dim: #3A1B22;
+  --accent-progress: #6C7CFF;
+
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+body.light-theme {
+  --bg-base: #F8FAFC;
+  --bg-surface: #FFFFFF;
+  --bg-surface-2: #F1F5F9;
+  --bg-surface-3: #E2E8F0;
+  --border: #CBD5E1;
+  --border-soft: #E2E8F0;
+
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-tertiary: #64748B;
+
+  --accent-real: #0D9488;
+  --accent-real-dim: #CCFBF1;
+  --accent-ai: #E11D48;
+  --accent-ai-dim: #FFE4E6;
+  --accent-progress: #4F46E5;
+
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(79, 70, 229, 0.05), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(13, 148, 136, 0.04), transparent 40%);
+}
+
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(108, 124, 255, 0.06), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(45, 212, 191, 0.05), transparent 40%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+#root { min-height: 100vh; }
+
+h1, h2, h3, h4 { font-family: var(--font-display); margin: 0; }
+p { margin: 0; }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent-progress);
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg-surface-3); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border); }
+
+.mono { font-family: var(--font-mono); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

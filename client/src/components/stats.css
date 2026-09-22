@@ -1,0 +1,287 @@
+/* ================================================================
+   stats.css – Statistics dashboard styles
+   ================================================================ */
+
+.stats-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.stats-loading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: 48px 0;
+}
+
+/* ── Summary cards grid ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.stats-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 20px 18px;
+  position: relative;
+  transition: border-color 0.15s;
+}
+.stats-card:hover { border-color: var(--border); }
+
+.stats-card.real { border-color: rgba(45, 212, 191, 0.25); }
+.stats-card.ai   { border-color: rgba(251, 113, 133, 0.25); }
+
+.stats-card-val {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+.stats-card.real .stats-card-val { color: var(--accent-real); }
+.stats-card.ai   .stats-card-val { color: var(--accent-ai); }
+
+.stats-card-lbl {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.stats-card-sub {
+  font-size: 20px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  opacity: 0.6;
+}
+
+/* ── Section wrapper ── */
+.stats-section {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+}
+
+.stats-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+}
+
+.stats-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+/* ── Period buttons ── */
+.stats-period-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.stats-period-btn {
+  background: transparent;
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.stats-period-btn:hover { border-color: var(--border); color: var(--text-primary); }
+.stats-period-btn.active {
+  background: var(--accent-progress);
+  border-color: var(--accent-progress);
+  color: #08090D;
+}
+
+/* ── Breakdown bar ── */
+.stats-breakdown-bar-wrap { }
+
+.stats-breakdown-bar {
+  display: flex;
+  height: 12px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--bg-surface-2);
+}
+
+.sbb-seg {
+  height: 100%;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sbb-seg.real { background: var(--accent-real); }
+.sbb-seg.ai   { background: var(--accent-ai); }
+
+.stats-breakdown-labels {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.sbl {
+  font-size: 12px;
+  font-weight: 500;
+}
+.sbl.real { color: var(--accent-real); }
+.sbl.ai   { color: var(--accent-ai); }
+
+/* ── Average confidence ── */
+.stats-avg-row { }
+.stats-avg-val {
+  font-size: 28px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  color: var(--accent-progress);
+  margin-bottom: 8px;
+}
+.stats-avg-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--bg-surface-2);
+  overflow: hidden;
+}
+.stats-avg-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent-progress);
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── SVG graph ── */
+.sg-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.sg-svg {
+  width: 100%;
+  min-width: 320px;
+  height: auto;
+  display: block;
+}
+
+.sg-grid {
+  stroke: var(--border-soft);
+  stroke-width: 1;
+}
+
+.sg-line {
+  stroke: var(--accent-progress);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sg-dot {
+  fill: #fff;
+  stroke-width: 2;
+}
+.sg-dot.real { stroke: var(--accent-real); fill: var(--accent-real); }
+.sg-dot.ai   { stroke: var(--accent-ai); fill: var(--accent-ai); }
+
+.sg-axis-lbl {
+  font-size: 10px;
+  fill: var(--text-tertiary);
+  font-family: var(--font-mono, monospace);
+}
+
+.sg-empty {
+  padding: 36px 0;
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 13px;
+}
+
+.stats-graph-wrap {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-2);
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.stats-graph-legend {
+  font-size: 11.5px;
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.stats-graph-legend .sg-dot.real { background: var(--accent-real); border: none; }
+.stats-graph-legend .sg-dot.ai   { background: var(--accent-ai); border: none; }
+
+/* ── Media breakdown ── */
+.stats-media-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stats-media-row {
+  display: grid;
+  align-items: center;
+  gap: 10px;
+  grid-template-columns: 24px 70px 1fr 36px 40px;
+}
+
+.stats-media-icon { font-size: 16px; }
+.stats-media-type { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
+
+.stats-media-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--bg-surface-2);
+  overflow: hidden;
+}
+.stats-media-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent-progress);
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stats-media-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: right;
+}
+.stats-media-pct {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono, monospace);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stats-media-row {
+    grid-template-columns: 24px 60px 1fr 30px 36px;
+  }
+  .stats-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
