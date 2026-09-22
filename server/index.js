@@ -19,6 +19,9 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/media', express.static(path.join(__dirname, 'uploads')));
+// Serve the React/Vite frontend
+const clientDistPath = path.join(__dirname, '../client/dist');
+app.use(express.static(clientDistPath));
 
 // Mount API routes
 app.use('/api/auth', authRoute);
@@ -36,6 +39,14 @@ app.get('/api/health', (req, res) => {
   res.json({ ok: true, detectorProvider: config.detectorProvider, providerConfigured: configured });
 });
 
+// Send all non-API routes to the React frontend
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api/') || req.path.startsWith('/media/')) {
+    return next();
+  }
+
+  res.sendFile(path.join(clientDistPath, 'index.html'));
+});
 app.use((err, req, res, next) => {
   if (err && err.code === 'LIMIT_FILE_SIZE') {
     return res.status(413).json({ error: `File too large. Max size is ${config.maxUploadMb}MB.` });
