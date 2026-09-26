@@ -34,8 +34,8 @@
 }
 .stats-card:hover { border-color: var(--border); }
 
-.stats-card.real { border-color: rgba(45, 212, 191, 0.25); }
-.stats-card.ai   { border-color: rgba(251, 113, 133, 0.25); }
+.stats-card.real { border-color: var(--border-soft); }
+.stats-card.ai   { border-color: var(--border-soft); }
 
 .stats-card-val {
   font-size: 32px;
@@ -109,7 +109,7 @@
 .stats-period-btn.active {
   background: var(--accent-progress);
   border-color: var(--accent-progress);
-  color: #08090D;
+  color: var(--btn-primary-text);
 }
 
 /* ── Breakdown bar ── */
@@ -192,7 +192,7 @@
 }
 
 .sg-dot {
-  fill: #fff;
+  fill: #FFFFFF;
   stroke-width: 2;
 }
 .sg-dot.real { stroke: var(--accent-real); fill: var(--accent-real); }

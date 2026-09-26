@@ -16,6 +16,21 @@
   --accent-ai-dim: #3A1B22;
   --accent-progress: #6C7CFF;
 
+  --btn-primary-text: #08090D;
+  --card-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.6);
+  --modal-shadow: 0 32px 80px rgba(0, 0, 0, 0.7);
+  --input-bg: #0A0D12;
+  --banner-bg: #1F1A0E;
+  --banner-border: #3A2E17;
+  --banner-text: #E8C27A;
+  --error-bg: #1C1116;
+  --error-border: #3A1B22;
+  --error-text: #FDA4AF;
+  --success-bg: rgba(45, 212, 191, 0.1);
+  --success-border: rgba(45, 212, 191, 0.3);
+  --success-text: #5EEAD4;
+  --media-wrap-bg: #05060A;
+
   --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
@@ -25,7 +40,7 @@
   --radius-lg: 16px;
 }
 
-body.light-theme {
+body.light-theme, html.light-theme body, html.light-theme {
   --bg-base: #F8FAFC;
   --bg-surface: #FFFFFF;
   --bg-surface-2: #F1F5F9;
@@ -43,13 +58,21 @@ body.light-theme {
   --accent-ai-dim: #FFE4E6;
   --accent-progress: #4F46E5;
 
-  background-color: var(--bg-base);
-  color: var(--text-primary);
-  background-image:
-    radial-gradient(circle at 15% 0%, rgba(79, 70, 229, 0.05), transparent 40%),
-    radial-gradient(circle at 85% 20%, rgba(13, 148, 136, 0.04), transparent 40%);
+  --btn-primary-text: #FFFFFF;
+  --card-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  --modal-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.18);
+  --input-bg: #FFFFFF;
+  --banner-bg: #FEFCE8;
+  --banner-border: #FEF08A;
+  --banner-text: #854D0E;
+  --error-bg: #FEF2F2;
+  --error-border: #FCA5A5;
+  --error-text: #991B1B;
+  --success-bg: #F0FDF4;
+  --success-border: #99F6E4;
+  --success-text: #0F766E;
+  --media-wrap-bg: #E2E8F0;
 }
-
 
 * { box-sizing: border-box; }
 
@@ -70,10 +93,16 @@ body {
   min-height: 100vh;
 }
 
+body.light-theme {
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(79, 70, 229, 0.05), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(13, 148, 136, 0.04), transparent 40%);
+}
+
 #root { min-height: 100vh; }
 
-h1, h2, h3, h4 { font-family: var(--font-display); margin: 0; }
-p { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-display); margin: 0; color: var(--text-primary); }
+p { margin: 0; color: var(--text-secondary); }
 
 button {
   font-family: var(--font-body);

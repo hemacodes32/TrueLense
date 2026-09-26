@@ -5,8 +5,8 @@
 }
 
 .admin-privacy-banner {
-  background: rgba(45, 212, 191, 0.08);
-  border: 1px solid rgba(45, 212, 191, 0.25);
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
   border-radius: var(--radius-md);
   padding: 14px 18px;
   display: flex;
@@ -78,7 +78,7 @@
 }
 
 .admin-search-input {
-  background: var(--bg-base);
+  background: var(--input-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 8px 12px 8px 34px;
@@ -129,7 +129,7 @@
 }
 
 .admin-table tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-surface-2);
 }
 
 .status-badge {
@@ -143,12 +143,12 @@
 }
 
 .status-badge.active {
-  background: rgba(45, 212, 191, 0.15);
+  background: var(--accent-real-dim);
   color: var(--accent-real);
 }
 
 .status-badge.suspended {
-  background: rgba(251, 113, 133, 0.15);
+  background: var(--accent-ai-dim);
   color: var(--accent-ai);
 }
 
@@ -162,9 +162,9 @@
 }
 
 .role-tag.admin {
-  background: rgba(108, 124, 255, 0.2);
-  color: #A5B4FC;
-  border: 1px solid rgba(108, 124, 255, 0.3);
+  background: var(--bg-surface-3);
+  color: var(--accent-progress);
+  border: 1px solid var(--border);
 }
 
 .admin-action-btn {
@@ -182,19 +182,19 @@
 }
 
 .admin-action-btn.suspend {
-  color: #FDA4AF;
-  border-color: rgba(251, 113, 133, 0.3);
+  color: var(--accent-ai);
+  border-color: var(--error-border);
 }
 
 .admin-action-btn.suspend:hover:not(:disabled) {
-  background: rgba(251, 113, 133, 0.15);
+  background: var(--accent-ai-dim);
 }
 
 .admin-action-btn.activate {
-  color: #5EEAD4;
-  border-color: rgba(45, 212, 191, 0.3);
+  color: var(--accent-real);
+  border-color: var(--success-border);
 }
 
 .admin-action-btn.activate:hover:not(:disabled) {
-  background: rgba(45, 212, 191, 0.15);
+  background: var(--accent-real-dim);
 }

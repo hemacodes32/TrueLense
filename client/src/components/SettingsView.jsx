@@ -8,6 +8,7 @@ import {
   deleteAllMyData,
   deleteAccount,
 } from '../api';
+import { setTheme } from '../theme';
 import ConfirmModal from './ConfirmModal';
 import './settings.css';
 
@@ -121,7 +122,10 @@ export default function SettingsView({ user, onUserUpdated, onLogout }) {
 
     if (key === 'saveHistory') setSaveHistory(val);
     if (key === 'storeMedia') setStoreMedia(val);
-    if (key === 'darkMode') setDarkMode(val);
+    if (key === 'darkMode') {
+      setDarkMode(val);
+      setTheme(val ? 'dark' : 'light');
+    }
 
     try {
       const data = await updateUserSettings(updated);
@@ -501,8 +505,8 @@ export default function SettingsView({ user, onUserUpdated, onLogout }) {
         <div style={{
           marginTop: 8,
           padding: '10px 14px',
-          background: 'rgba(108, 124, 255, 0.06)',
-          border: '1px solid rgba(108, 124, 255, 0.15)',
+          background: 'var(--bg-surface-2)',
+          border: '1px solid var(--border-soft)',
           borderRadius: 8,
           fontSize: 12,
           color: 'var(--text-secondary)',

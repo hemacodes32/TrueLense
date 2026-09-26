@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { loginUser, registerUser, requestPasswordReset, resetPassword } from '../api';
+import { getTheme, setTheme } from '../theme';
 import './auth.css';
 
 // ── Shared SVG icons ──────────────────────────────────────────────────────────
@@ -66,6 +67,13 @@ export default function AuthPage({ onAuthSuccess, initialMode = 'login' }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
+  const [currentTheme, setCurrentTheme] = useState(getTheme());
+
+  const handleToggleTheme = () => {
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+    setCurrentTheme(nextTheme);
+  };
 
   // Login / Register form fields
   const [name, setName] = useState('');
@@ -198,6 +206,14 @@ export default function AuthPage({ onAuthSuccess, initialMode = 'login' }) {
   return (
     <div className="auth-wrapper">
       <div className="auth-card">
+        <button
+          type="button"
+          className="auth-theme-toggle"
+          onClick={handleToggleTheme}
+          title={`Switch to ${currentTheme === 'dark' ? 'Light' : 'Dark'} Mode`}
+        >
+          {currentTheme === 'dark' ? '☀️ Light' : '🌙 Dark'}
+        </button>
 
         {/* ── Brand header ── */}
         <div className="auth-brand">

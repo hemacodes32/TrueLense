@@ -6,6 +6,7 @@
 
 .sidebar {
   border-right: 1px solid var(--border-soft);
+  background: var(--bg-surface);
   padding: 28px 20px;
   display: flex;
   flex-direction: column;
@@ -182,7 +183,7 @@
 }
 
 .status-dot.ok { background: var(--accent-real); }
-.status-dot.warn { background: #F5A623; }
+.status-dot.warn { background: #F59E0B; }
 
 .main {
   padding: 44px 48px 64px;
@@ -198,6 +199,7 @@
   font-size: 26px;
   font-weight: 600;
   letter-spacing: -0.01em;
+  color: var(--text-primary);
 }
 
 .page-head p {
@@ -208,9 +210,9 @@
 }
 
 .banner {
-  border: 1px solid #3A2E17;
-  background: #1F1A0E;
-  color: #E8C27A;
+  border: 1px solid var(--banner-border);
+  background: var(--banner-bg);
+  color: var(--banner-text);
   border-radius: var(--radius-sm);
   padding: 12px 14px;
   font-size: 13px;
@@ -220,7 +222,8 @@
 
 .banner code {
   font-family: var(--font-mono);
-  background: rgba(255,255,255,0.06);
+  background: var(--bg-surface-3);
+  color: var(--banner-text);
   padding: 1px 5px;
   border-radius: 4px;
 }

@@ -8,6 +8,7 @@ import AdminDashboard from './components/AdminDashboard';
 import AuthPage from './components/AuthPage';
 import StatsDashboard from './components/StatsDashboard';
 import { fetchHistory, fetchHealth, fetchMe, removeToken } from './api';
+import { getTheme, setTheme } from './theme';
 import './App.css';
 import './components/analyze.css';
 import './components/history.css';
@@ -33,7 +34,13 @@ export default function App() {
     setHistory([]);
     setFile(null);
     setView('analyze');
-    document.body.classList.remove('light-theme');
+    // Ensure the user's currently chosen theme remains active upon logout
+    setTheme(getTheme());
+  }, []);
+
+  // Initialize theme from localStorage on load
+  useEffect(() => {
+    setTheme(getTheme());
   }, []);
 
   // Check auth session on load
@@ -42,10 +49,8 @@ export default function App() {
       .then((currentUser) => {
         if (currentUser) {
           setUser(currentUser);
-          if (currentUser.settings?.darkMode === false) {
-            document.body.classList.add('light-theme');
-          } else {
-            document.body.classList.remove('light-theme');
+          if (currentUser.settings?.darkMode !== undefined) {
+            setTheme(currentUser.settings.darkMode ? 'dark' : 'light');
           }
         }
       })
@@ -73,21 +78,17 @@ export default function App() {
     }
   }, [user, loadHistory]);
 
-  // Apply theme dynamically
+  // Apply theme dynamically whenever user settings change
   useEffect(() => {
-    if (user?.settings?.darkMode === false) {
-      document.body.classList.add('light-theme');
-    } else {
-      document.body.classList.remove('light-theme');
+    if (user?.settings?.darkMode !== undefined) {
+      setTheme(user.settings.darkMode ? 'dark' : 'light');
     }
   }, [user?.settings?.darkMode]);
 
   const handleAuthSuccess = (authenticatedUser) => {
     setUser(authenticatedUser);
-    if (authenticatedUser.settings?.darkMode === false) {
-      document.body.classList.add('light-theme');
-    } else {
-      document.body.classList.remove('light-theme');
+    if (authenticatedUser.settings?.darkMode !== undefined) {
+      setTheme(authenticatedUser.settings.darkMode ? 'dark' : 'light');
     }
     // If admin, default to analyze or admin
     setView(authenticatedUser.role === 'admin' ? 'admin' : 'analyze');
